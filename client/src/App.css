@@ -1,0 +1,21 @@
+@import "tailwindcss";
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+.form-container {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 100px auto;
+  gap: 1rem;
+}
+
+button {
+  background: #333;
+  color: white;
+  padding: 0.5rem;
+  border: none;
+}
