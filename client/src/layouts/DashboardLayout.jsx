@@ -1,15 +1,24 @@
 // layouts/DashboardLayout.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
+import RightNav from '../components/RightNav';
 import { Outlet } from 'react-router-dom';
+import '../styles/scrollbar-hide.css';
 
 export default function DashboardLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate loading for 1s, replace with real loading logic if needed
+    const timer = setTimeout(() => setLoading(false), 1000);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Sidebar for mobile: slide in/out
   return (
-    <div className="layout flex h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+    <div className="layout flex h-screen bg-[#fbfbfb] dark:bg-gray-900 text-gray-900 dark:text-gray-100 scrollbar-hide">
       {/* Desktop Sidebar */}
       <div className="hidden lg:block">
         <Sidebar />
@@ -26,11 +35,23 @@ export default function DashboardLayout() {
       >
         <Sidebar isSidebarOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
       </div>
-      {/* Main Content */}
+      {/* Main Content + RightNav */}
       <div className="flex-1 flex flex-col min-w-0">
         <Header toggleSidebar={() => setSidebarOpen(v => !v)} />
-        <div className="content flex-1 overflow-y-auto p-4">
-          <Outlet /> {/* Render nested route pages here */}
+        <div className="flex flex-1 min-h-0">
+          <div className="flex-1 overflow-y-auto p-4 scrollbar-hide">
+            {loading ? (
+              <div className="space-y-6 animate-pulse">
+                <div className="h-8 w-1/3 bg-gray-200 dark:bg-gray-700 rounded mb-6"></div>
+                <div className="h-40 w-full bg-gray-200 dark:bg-gray-700 rounded-2xl mb-4"></div>
+                <div className="h-40 w-full bg-gray-200 dark:bg-gray-700 rounded-2xl mb-4"></div>
+                <div className="h-40 w-2/3 bg-gray-200 dark:bg-gray-700 rounded-2xl"></div>
+              </div>
+            ) : (
+              <Outlet />
+            )}
+          </div>
+          <RightNav />
         </div>
       </div>
     </div>

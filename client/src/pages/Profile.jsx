@@ -67,7 +67,8 @@ export default function Profile() {
   };
 
   return (
-    <div className="min-h-screen pb-12 text-sm sm:text-base">
+    <div className="flex flex-col items-center justify-center bg-white dark:bg-gray-900 min-h-screen rounded-2xl shadow-md transition-all duration-300">
+    <div className="min-h-screen max-w-[700px] pb-12 text-sm sm:text-base">
       {/* Edit Mode Modal/Page */}
       {editing && (
         <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 z-50 overflow-y-auto animate-fade-in">
@@ -205,7 +206,7 @@ export default function Profile() {
       )}
 
       {/* Main Profile View */}
-      <div className="container mx-auto max-w-4xl bg-white dark:bg-[#232323] rounded-xl shadow-lg mt-4 overflow-hidden text-sm sm:text-base">
+      <div className="container mx-auto max-w-4xl bg-white dark:bg-[#232323] rounded-xl shadow-md mt-4 overflow-hidden text-sm sm:text-base">
         {/* Cover Photo */}
         <div className="relative w-full h-48 sm:h-64 bg-gray-200 dark:bg-[#333] overflow-hidden">
           <img
@@ -358,6 +359,7 @@ export default function Profile() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }

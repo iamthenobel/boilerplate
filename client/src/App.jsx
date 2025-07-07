@@ -7,7 +7,12 @@ import Settings from './pages/Settings';
 import Landing from './pages/Landing';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-import IQTest from './pages/IQTest';
+import Search from './pages/Search';
+import Home from './pages/Home';
+import Insight from './pages/Insight';
+import Create from './pages/Create';
+import Notifications from './pages/Notifications';
+import Chats from './pages/Chats';
 
 function App() {
   return (
@@ -16,7 +21,12 @@ function App() {
         <Route index element={<Dashboard />} />
         <Route path="profile" element={<Profile />} />
         <Route path="settings" element={<Settings />} />
-        <Route path="iqt" element={<IQTest />} />
+        <Route path="search" element={<Search />} />
+        <Route path="home" element={<Home />} />
+        <Route path="insight" element={<Insight />} />
+        <Route path="create" element={<Create />} />
+        <Route path="notifications" element={<Notifications />} />
+        <Route path="chats" element={<Chats />} />
       </Route>
       <Route path="/" element={<Landing/>} />
       <Route path="/login" element={<Login />} />
