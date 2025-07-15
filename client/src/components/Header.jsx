@@ -5,7 +5,7 @@ import { HiBars2 } from 'react-icons/hi2';
 export default function Header({ toggleSidebar }) {
   return (
     <header
-      className="bg-[#fbfbfb] dark:bg-[#252525] px-4 py-5 flex items-center w-full sticky top-0 z-40 transition-colors duration-300 shadow-none border-none"
+      className="bg-[#fbfbfb] dark:bg-[#252525] px-4 py-1 lg:py-5 flex items-center w-full sticky top-0 z-40 transition-colors duration-300 shadow-none border-none"
     >
       {/* Menu Toggle for Small Screens (visible only on small screens) */}
       

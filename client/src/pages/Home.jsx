@@ -22,6 +22,36 @@ const postsData = [
     time: '4h ago',
     content: 'Loving the new UI updates. Everything feels so much smoother and more modern! ✨',
   },
+  // Post with a single image
+  {
+    id: 3,
+    user: {
+      name: 'Emily Rose',
+      username: 'emily.rose',
+      avatar: 'https://ui-avatars.com/api/?name=Emily+Rose&background=10b981&color=fff',
+    },
+    time: '1d ago',
+    content: 'Captured this beautiful sunset yesterday evening 🌅',
+    images: [
+      'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80',
+    ],
+  },
+  // Post with multiple images
+  {
+    id: 4,
+    user: {
+      name: 'Mike Lee',
+      username: 'mike.lee',
+      avatar: 'https://ui-avatars.com/api/?name=Mike+Lee&background=f59e42&color=fff',
+    },
+    time: '2d ago',
+    content: 'Weekend adventure with friends! 🏞️',
+    images: [
+      'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80',
+      'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=600&q=80',
+      'https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=600&q=80',
+    ],
+  },
 ];
 
 function PostOptions({ show, onClose, onCopy }) {
@@ -116,6 +146,27 @@ export default function Home() {
             <div className="text-base text-[#252525] dark:text-white leading-relaxed whitespace-pre-line">
               {post.content}
             </div>
+            {/* Post Images */}
+            {post.images && post.images.length > 0 && (
+              <div className={`mt-2 flex ${post.images.length > 1 ? 'gap-3' : ''} ${post.images.length > 1 ? 'flex-wrap' : ''}`}>
+                {post.images.length === 1 ? (
+                  <img
+                    src={post.images[0]}
+                    alt="Post visual"
+                    className="rounded-xl w-full max-h-80 object-cover border border-gray-100 dark:border-[#333] shadow-sm"
+                  />
+                ) : (
+                  post.images.map((img, idx) => (
+                    <img
+                      key={idx}
+                      src={img}
+                      alt={`Post visual ${idx + 1}`}
+                      className="rounded-xl w-[32%] max-h-48 object-cover border border-gray-100 dark:border-[#333] shadow-sm"
+                    />
+                  ))
+                )}
+              </div>
+            )}
             {/* Post Actions */}
             <div className="flex items-center gap-4 mt-2">
               <button

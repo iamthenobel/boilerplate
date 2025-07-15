@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
 import RightNav from '../components/RightNav';
+import FooterNav from '../components/FooterNav';
 import { Outlet } from 'react-router-dom';
 import '../styles/scrollbar-hide.css';
 
@@ -54,6 +55,8 @@ export default function DashboardLayout() {
           <RightNav />
         </div>
       </div>
+      {/* Mobile Footer Navigation */}
+      <FooterNav />
     </div>
   );
 }
